@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "411799721707",
+    "firebase_url": "https://economysce-146c9-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "economysce-146c9",
+    "storage_bucket": "economysce-146c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411799721707:android:a43b823058094ab3cc10ae",
+        "android_client_info": {
+          "package_name": "com.example.economysce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411799721707-v22jve10cil3fbf7753epgbasv1jbcq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.economysce",
+            "certificate_hash": "00593c0e930bb00bf686f2ab400974c694cb64bf"
+          }
+        },
+        {
+          "client_id": "411799721707-gcj00vsq07ra9judalshiegu3cu7c7vv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyDZALa85XjeawmmQMh9QsfEV3Os3c7Oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411799721707-gcj00vsq07ra9judalshiegu3cu7c7vv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
