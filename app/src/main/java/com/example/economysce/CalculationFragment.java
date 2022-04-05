@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.economysce.Adapters.CalculationAdapter;
 import com.example.economysce.Class.Data;
 import com.example.economysce.Class.User;
@@ -34,7 +36,9 @@ public class CalculationFragment extends Fragment {
     }
     private void readUsers(){
         List<User> users = new ArrayList<>();
+        int i=-1;
         for (User user : data.getUserList()) {
+            i++;
             users.add(user);
             reductionList.add(getUserPayment(user));
         }
@@ -42,24 +46,31 @@ public class CalculationFragment extends Fragment {
         recyclerView.setAdapter(calculationAdapter);
     }
     private Double getUserPayment(User user){
-        if(user.getAcceptSection14().getYear() == 1)
+        if(user.getAcceptSection14().getYear() == 1 && user.getPercentSection14() == 0)
             return CalcWorkerA(user);
         else if(user.getAcceptSection14().getYear() == user.getStartWork().getYear() && user.getAcceptSection14().getMonth() == user.getStartWork().getMonth() && user.getAcceptSection14().getDate() == user.getStartWork().getDate())
             return CalcWorkerB(user);
         return CalcWorkerC(user);
     }
     private double CalcWorkerA(User user){
-        double sol = 0, keepWorking = 1 - user.getLeaving() - user.getFired() - user.getDeath();
-        for(int i=0; i< user.getRetirement(); i++) {
-            sol +=  (user.getSalary() * user.getVetek()) * ((Math.pow(1 + AddSalary, i + 0.5) * Math.pow(keepWorking, i) * user.getFired()) / (Math.pow(1 + (data.getDiscountRateList().get(i).getPercent() / 100), i + 0.5))) +
-                     user.getAssetValue() * Math.pow(keepWorking, i) * user.getLeaving() +
-                    (user.getSalary() * user.getVetek()) * ((Math.pow(1 + AddSalary, i + 0.5) * Math.pow(keepWorking, i) * user.getDeath()) / (Math.pow(1 + (data.getDiscountRateList().get(i).getPercent() / 100), i + 0.5)));
+        double sol = 0;
+        int Retirement = 67 - user.getAge() - 1;
+        if(user.getGender().equals("F"))
+            Retirement -= 3;
+        for(int i=0; i< Retirement ; i++) {
+                double keepWorking = getPx(user, i);
+                sol +=  UpperPart(user.getSalary(), user.getVetek(), user.getPercentSection14(), i, keepWorking , user.getFired()) / LowerPart(i) +
+                        user.getAssetValue() * keepWorking * user.getLeaving() +
+                        UpperPart(user.getSalary(), user.getVetek(), user.getPercentSection14(), i, keepWorking , user.getDeath()) / LowerPart(i);
+                user.setAge(user.getAge() + 1);
+                user.getFiredAndResign();
         }
         return sol;
+
     }
     private double CalcWorkerB(User user){
         double sol = 0, keepWorking = 1 - user.getLeaving() - user.getFired() - user.getDeath();
-        for(int i=0; i< user.getRetirement(); i++) {
+        for(int i=0; i< user.getRetirement() - 1; i++) {
             sol +=  (user.getSalary() * user.getVetek()) * (1-user.getPercentSection14()) * ((Math.pow(1 + AddSalary, i + 0.5) * Math.pow(keepWorking, i) * user.getFired()) / (Math.pow(1 + (data.getDiscountRateList().get(i).getPercent() / 100), i + 0.5))) +
                     (user.getSalary() * user.getVetek()) * (1-user.getPercentSection14()) * ((Math.pow(1 + AddSalary, i + 0.5) * Math.pow(keepWorking, i) * user.getDeath()) / (Math.pow(1 + (data.getDiscountRateList().get(i).getPercent() / 100), i + 0.5)));
         }
@@ -67,11 +78,29 @@ public class CalculationFragment extends Fragment {
     }
     private double CalcWorkerC(User user){
         double sol = 0, keepWorking = 1 - user.getLeaving() - user.getFired() - user.getDeath();
-        for(int i=0; i< user.getRetirement(); i++) {
+        for(int i=0; i< user.getRetirement() - 1; i++) {
             sol +=  (user.getSalary() * user.getVetek()) * (1-user.getPercentSection14()) * ((Math.pow(1 + AddSalary, i + 0.5) * Math.pow(keepWorking, i) * user.getFired()) / (Math.pow(1 + (data.getDiscountRateList().get(i).getPercent() / 100), i + 0.5))) +
                     user.getAssetValue() * Math.pow(keepWorking, i) * user.getLeaving() +
                     (user.getSalary() * user.getVetek()) * (1-user.getPercentSection14()) * ((Math.pow(1 + AddSalary, i + 0.5) * Math.pow(keepWorking, i) * user.getDeath()) / (Math.pow(1 + (data.getDiscountRateList().get(i).getPercent() / 100), i + 0.5)));
         }
+        return sol;
+    }
+    private double UpperPart(double Salary, double Vetek, double PercentSection14, double Power, double p, double q){
+        return Salary * Vetek * (1 - PercentSection14) * Math.pow(1 + AddSalary, Power + 0.5) * p * q;
+    }
+    private double LowerPart(int index){
+        double discountRate = data.getDiscountRateList().get(index).getPercent() / 100 ;
+        return Math.pow(1 + discountRate, index + 0.5);
+    }
+    private double getPx(User user , int index){
+        double sol = 1;
+        for(int i=0; i < index ;i++) {
+            Log.v("TAG", "index: " + sol + "");
+            sol *= (1 - user.getLeaving() - user.getFired() - 0.0001);
+            user.setAge(user.getAge() + 1);
+            user.getFiredAndResign();
+        }
+        user.setAge(user.getAge()-index);
         return sol;
     }
 }

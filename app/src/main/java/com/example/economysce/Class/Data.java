@@ -21,6 +21,7 @@ public class Data {
         userList.add(new User("3","מאיר","טרבלסי","M", new Date(1965,10,17) ,new Date(1991,3,10),new Double(23000),new Date(1,1,1),0,new Double(493533),new Date(2020,6,1)));
         userList.add(new User("4","אירית","אשכנזי","F", new Date(1967,5,6) ,new Date(2002,7,7),new Double(10000),new Date(1,1,1),0,new Double(128799),new Date(1,1,1)));
         userList.add(new User("5","נתנאל","קיופמן","M", new Date(1967,5,28) ,new Date(2016,9,1),new Double(11500),new Date(2016,9,1),100,new Double(0),new Date(2021,10,1)));
+        userList.add(new User("13","מיכאל","גולד","M", new Date(1973,8,27) ,new Date(2000,11,7),new Double(24500),new Date(2016,1,1),100,new Double(224888),new Date(1,1,1)));
     }
     private void AddLeavingProbability(){
         leavingProbabilityList.add(new LeavingProbability(18,29,7,20));

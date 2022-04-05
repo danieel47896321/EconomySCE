@@ -46,7 +46,29 @@ public class User {
         AddLeavingProbability();
         getFiredAndResign();
     }
+    public User(User user){
+        this.Id = user.getId();
+        this.Name = user.getId();
+        this.LastName = user.getId();
+        this.Gender = user.getId();
+        this.BirthDay = user.getBirthDay();
+        this.StartWork = user.getStartWork();
+        this.Salary = user.getSalary();
+        this.AcceptSection14 = user.getAcceptSection14();
+        this.PercentSection14 = user.getPercentSection14();
+        this.AssetValue = user.getAssetValue();
+        this.LeftDate = user.getLeftDate();
+        this.Vetek = user.getVetek();
+        this.Retirement = user.getRetirement();
+        this.Fired = user.getFired();
+        this.Leaving = user.getLeaving();
+        this.Death = user.getDeath();
+        this.Age = user.getAge();
+    }
     public int getAge() { return Age; }
+    public void setAge(int age) {
+        Age = age;
+    }
     public double getDeath() { return Death; }
     public double getFired() { return Fired; }
     public double getLeaving() { return Leaving; }
@@ -71,14 +93,12 @@ public class User {
             years -=1;
         return years;
     }
-    private void getFiredAndResign(){
+    public void getFiredAndResign(){
         for(int j=0; j< leavingProbabilityList.size();j++)
-            if(leavingProbabilityList.get(j).getFromAge() < Age && Age < leavingProbabilityList.get(j).getToAge()){
-                Fired = leavingProbabilityList.get(j).getFiredPercent();
-                Leaving = leavingProbabilityList.get(j).getResignPercent();
+            if(leavingProbabilityList.get(j).getFromAge() <= Age && Age <= leavingProbabilityList.get(j).getToAge()){
+                Fired = leavingProbabilityList.get(j).getFiredPercent() / 100;
+                Leaving = leavingProbabilityList.get(j).getResignPercent() / 100;
             }
-        Fired/=100;
-        Leaving/=100;
     }
     private void AddLeavingProbability(){
         leavingProbabilityList.add(new LeavingProbability(18,29,7,20));
