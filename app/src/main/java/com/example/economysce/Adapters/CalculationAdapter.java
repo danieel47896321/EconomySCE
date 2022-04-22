@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.economysce.Class.User;
 import com.example.economysce.R;
+
 import java.util.List;
 
 public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.ViewHolder> {
@@ -31,9 +34,9 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
         User user = users.get(position);
         Double reduction = reductions.get(position);
         holder.fragmentUserId.setText("."+user.getId());
-        holder.fragmentUserName.setText(holder.fragmentUserName.getText()+user.getName());
-        holder.fragmentUserLastName.setText(holder.fragmentUserLastName.getText()+user.getLastName());
-        holder.fragmentUserCompensation.setText(holder.fragmentUserCompensation.getText()+""+reduction.doubleValue());
+        holder.fragmentUserName.setText("שם: " +user.getName());
+        holder.fragmentUserLastName.setText(", שם משפחה: "+user.getLastName());
+        holder.fragmentUserCompensation.setText("סכום הפיצויים: "+(int)reduction.doubleValue());
     }
     @Override
     public int getItemCount() { return users.size(); }

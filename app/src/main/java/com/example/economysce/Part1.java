@@ -1,11 +1,13 @@
 package com.example.economysce;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,10 +28,12 @@ public class Part1 extends AppCompatActivity {
         setContentView(R.layout.activity_part1);
         init();
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void init(){
         setID();
         BackIcon();
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void setID(){
         BackIcon = findViewById(R.id.BackIcon);
         BackIcon.setVisibility(View.VISIBLE);
@@ -56,10 +60,12 @@ public class Part1 extends AppCompatActivity {
     }
     public static class ViewPagerAdapter extends FragmentStateAdapter {
         private String[] titles = {"נתונים","הנחות","חישוב"};
+        @RequiresApi(api = Build.VERSION_CODES.O)
         public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);
             createFragment(2);
         }
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @NonNull
         @Override
         public Fragment createFragment(int position) {

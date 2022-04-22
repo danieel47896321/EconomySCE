@@ -5,7 +5,7 @@
     android:id="@+id/Page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sky"
+    android:background="@color/grey"
     tools:context=".ReductionFragment">
 
     <TableLayout
@@ -28,7 +28,7 @@
                 android:padding="10dp"
                 android:text="שנה"
                 android:textColor="@color/white"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:padding="10dp"
                 android:text="שיעור היוון"
                 android:textColor="@color/white"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </TableRow>
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="גילאים"
                 android:padding="10dp"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/white" />
 
@@ -83,7 +83,7 @@
                 android:padding="10dp"
                 android:text="פיטורין"
                 android:textColor="@color/white"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:padding="10dp"
                 android:text="התפתרות"
                 android:textColor="@color/white"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </TableRow>
     </TableLayout>
@@ -117,7 +117,7 @@
         android:padding="10dp"
         android:text="עקום שיעור היוון"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/Table2"
         app:layout_constraintStart_toStartOf="@+id/Table2"
@@ -133,7 +133,7 @@
         android:padding="10dp"
         android:text="הסתברות עזיבה"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/Table1"
         app:layout_constraintStart_toStartOf="@+id/Table1"
@@ -145,8 +145,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="שיעור עלית השכר הצפוי: 3%"
-        android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textColor="@color/default_color"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewLeavingProbability"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewLeavingProbability"
@@ -158,8 +158,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="תאריך עלית שכר: 01/09/2022"
-        android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textColor="@color/default_color"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3"
