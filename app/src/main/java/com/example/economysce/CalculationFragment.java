@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,6 +24,11 @@ import com.example.economysce.Class.Data;
 import com.example.economysce.Class.DeathProbability;
 import com.example.economysce.Class.LeavingProbability;
 import com.example.economysce.Class.User;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,7 +51,6 @@ public class CalculationFragment extends Fragment {
     private double SalaryGrowthRate = 0.05;
     private CalculationAdapter calculationAdapter;
     private ArrayList<Double> reductionList;
-    private File filePath = new File(Environment.getExternalStorageDirectory() + "/Demo.xls");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calculation,container,false);
@@ -65,16 +70,16 @@ public class CalculationFragment extends Fragment {
     }
     private void readUsers(){
         users = new ArrayList<>();
-        int index = 0;
+        int index = 0, i = 0;
         for (User user : data.getUserList()) {
             if(index % 2 == 0)
                 SalaryGrowthRate = 0.05;
             else
                 SalaryGrowthRate = 0.03;
             users.add(user);
-            reductionList.add(getUserPayment(user));
-            text += user.getName() +" " +user.getLastName() + " פיצויים: " + reductionList.get(0) + "\n";
-            index++;
+            double payment = getUserPayment(user);
+            reductionList.add(payment);
+            text += user.getId() + ". " + user.getName() +" " +user.getLastName() + ", פיצויים: " + (int)payment + "\n";
         }
         calculationAdapter = new CalculationAdapter(getContext(), users, reductionList);
         recyclerView.setAdapter(calculationAdapter);
@@ -114,11 +119,54 @@ public class CalculationFragment extends Fragment {
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.R)
-    private void saveFile(){
+    private void saveFile()  {
+        // Create a new workbook
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+        HSSFSheet hssfSheet = hssfWorkbook.createSheet("Part1 Sol");
+        //headers
+        HSSFRow title_Row = hssfSheet.createRow(0);
+        HSSFCell title_id = title_Row.createCell(0);
+        HSSFCell title_name = title_Row.createCell(1);
+        HSSFCell title_lastname = title_Row.createCell(2);
+        HSSFCell title_payment = title_Row.createCell(3);
+        title_id.setCellValue("מסד");
+        title_name.setCellValue("שם");
+        title_lastname.setCellValue("שם משפחה");
+        title_payment.setCellValue("פיצויים");
+        //insert data
+        for(int i=0; i<users.size();i++) {
+            HSSFRow hssfRow = hssfSheet.createRow(i+1);
+            HSSFCell id = hssfRow.createCell(0);
+            HSSFCell name = hssfRow.createCell(1);
+            HSSFCell lastname = hssfRow.createCell(2);
+            HSSFCell payment = hssfRow.createCell(3);
+            id.setCellValue(users.get(i).getId());
+            name.setCellValue(users.get(i).getName());
+            lastname.setCellValue(users.get(i).getLastName());
+            payment.setCellValue((int)reductionList.get(i).doubleValue());
+        }
         File root = android.os.Environment.getExternalStorageDirectory();
         File dir = new File (root.getAbsolutePath() + "/download");
         dir.mkdirs();
-        File file = new File(dir, "myData.txt");
+        File file = new File(dir, "Economy.xls");
+        try {
+            if (!file.exists()){
+                file.createNewFile();
+            }
+            FileOutputStream fileOutputStream= new FileOutputStream(file);
+            hssfWorkbook.write(fileOutputStream);
+            if (fileOutputStream!=null){
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            }
+            Toast.makeText(context, "קובץ אקסל נוצר בהצלחה!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*File root = android.os.Environment.getExternalStorageDirectory();
+        File dir = new File (root.getAbsolutePath() + "/download");
+        dir.mkdirs();
+        File file = new File(dir, "part1.txt");
         try {
             FileOutputStream f = new FileOutputStream(file);
             PrintWriter pw = new PrintWriter(f);
@@ -130,7 +178,7 @@ public class CalculationFragment extends Fragment {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
     private Double getUserPayment(User user){
         //have left date
