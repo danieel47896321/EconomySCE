@@ -1,12 +1,19 @@
 package com.example.economysce;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,25 +24,38 @@ import com.example.economysce.Class.DeathProbability;
 import com.example.economysce.Class.LeavingProbability;
 import com.example.economysce.Class.User;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CalculationFragment extends Fragment {
     private RecyclerView recyclerView;
+    private Button buttonCreateExcel;
     private ArrayList<LeavingProbability> leavingProbabilityList = new ArrayList<>();
     private ArrayList<DeathProbability> deathProbabilityArrayList = new ArrayList<>();
     private Data data = new Data();
+    private Context context;
+    private String text = "";
+    private List<User> users;
     private double SalaryGrowthRate = 0.05;
     private CalculationAdapter calculationAdapter;
     private ArrayList<Double> reductionList;
+    private File filePath = new File(Environment.getExternalStorageDirectory() + "/Demo.xls");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calculation,container,false);
+        ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+        context = view.getContext();
         AddLeavingProbability();
         AddDeathProbability();
         for(int i=0; i<data.getDiscountRateList().size() ; i++)
             data.getDiscountRateList().get(i).setPercent(data.getDiscountRateList().get(i).getPercent() / 100);
+        buttonCreateExcel = view.findViewById(R.id.buttonCreateExcel);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -44,7 +64,7 @@ public class CalculationFragment extends Fragment {
         return view;
     }
     private void readUsers(){
-        List<User> users = new ArrayList<>();
+        users = new ArrayList<>();
         int index = 0;
         for (User user : data.getUserList()) {
             if(index % 2 == 0)
@@ -53,13 +73,64 @@ public class CalculationFragment extends Fragment {
                 SalaryGrowthRate = 0.03;
             users.add(user);
             reductionList.add(getUserPayment(user));
+            text += user.getName() +" " +user.getLastName() + " פיצויים: " + reductionList.get(0) + "\n";
+            index++;
         }
         calculationAdapter = new CalculationAdapter(getContext(), users, reductionList);
         recyclerView.setAdapter(calculationAdapter);
+        CreateExcel();
+    }
+    public void CreateExcel(){
+        buttonCreateExcel.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.R)
+            @Override
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                        String[] permissions ={ Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permissions,1);
+                    }
+                    else {
+                        saveFile();
+                    }
+                }
+                else
+                    saveFile();
+            }
+        });
+    }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 1:{
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    saveFile();
+                else{
 
-
-
+                }
+            }
+        }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void saveFile(){
+        File root = android.os.Environment.getExternalStorageDirectory();
+        File dir = new File (root.getAbsolutePath() + "/download");
+        dir.mkdirs();
+        File file = new File(dir, "myData.txt");
+        try {
+            FileOutputStream f = new FileOutputStream(file);
+            PrintWriter pw = new PrintWriter(f);
+            pw.println(text);
+            pw.flush();
+            pw.close();
+            f.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private Double getUserPayment(User user){
         //have left date
