@@ -191,23 +191,6 @@ public class DataFragment extends Fragment {
         userList.add(new User("148","מקסים","גרובר","M",new Date(1981,2,10),new Date(2016,10,8),new Double(13919.34375),null,0,new Double(8754.41178936813),null,""));
         userList.add(new User("149","פני","מוזס","F",new Date(1986,9,19),new Date(2016,11,13),new Double(10283.203125),null,0,new Double(5422.84989348803),null,""));
         userList.add(new User("150","מרינה","בר לב","F",new Date(1995,10,24),new Date(2016,11,14),new Double(10562.90625),null,0,new Double(5599.47561151864),null,""));
-        //106-150
-        /*
-        userList.add(new User("1","חיים","גלוקמן","M", new Date(1985,6,9) ,new Date(2013,12,10),new Double(7000),new Date(2013,12,10),100,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("2","שרה","אברג'ל","F", new Date(1985,5,23) ,new Date(2014,7,10),new Double(21000),new Date(2014,7,10),72,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("4","אירית","אשכנזי","F", new Date(1967,5,6) ,new Date(2002,7,7),new Double(10000),null,0,new Double(128799),new Date(1,1,1),""));
-        userList.add(new User("7","חיה","לוי","F", new Date(1968,4,1) ,new Date(2019,1,3),new Double(23668),new Date(2019,1,3),100,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("9","אביגל","מצטנר","F", new Date(1972,11,29) ,new Date(2019,12,1),new Double(10700),new Date(2019,12,1),100,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("10","אבי","גולדמן","M", new Date(1973,5,11) ,new Date(2017,2,21),new Double(8500),new Date(2017,2,21),72,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("11","משה","אבולפיה","M", new Date(1973,5,1) ,new Date(2002,9,1),new Double(23000),null,0,new Double(309279),new Date(1,1,1),""));
-        userList.add(new User("12","אלקס","פלטינקוב","M", new Date(1973,6,17) ,new Date(2019,1,20),new Double(6500),new Date(2019,1,20),100,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("13","מיכאל","גולד","M", new Date(1973,8,27) ,new Date(2000,11,7),new Double(24500),new Date(2016,1,1),100,new Double(224888),new Date(1,1,1),""));
-        userList.add(new User("15","עדי","וקסמן","M", new Date(1970,6,15) ,new Date(2011,8,14),new Double(37000),new Date(2011,8,14),72,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("16","אסנת","גולדברג","F", new Date(1971,9,4) ,new Date(2004,1,4),new Double(9000),new Date(2017,4,1),72,new Double(115887),new Date(1,1,1),""));
-        userList.add(new User("17","רחל","בן משה","F", new Date(1970,11,16) ,new Date(2017,6,20),new Double(17500),new Date(2017,6,20),72,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("18","נקול","פטרוק","F", new Date(1971,2,15) ,new Date(2018,12,26),new Double(22000),new Date(2018,12,26),100,new Double(0),new Date(1,1,1),""));
-        userList.add(new User("19","אנטולי","וסרמן","M", new Date(1971,10,12) ,new Date(2016,1,5),new Double(21500),new Date(2016,1,5),100,new Double(0),new Date(1,1,1),""));
-        */
     }
 
 }

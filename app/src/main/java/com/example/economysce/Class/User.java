@@ -20,7 +20,7 @@ public class User {
     private double AssetValue;
     private Date LeftDate;
     private double Vetek;
-    private int Age = 1;
+    private int Age;
     private String ReasonForLeaving;
     @RequiresApi(api = Build.VERSION_CODES.O)
     public User(String id, String name, String lastName, String gender, Date birthDay, Date startWork, double salary, Date acceptSection14, double percentSection14, double assetValue, Date leftDate, String reasonForLeaving) {
@@ -38,6 +38,7 @@ public class User {
         Age = getYears(BirthDay);
         Vetek = getVetek(StartWork);
         ReasonForLeaving = reasonForLeaving;
+        Age = getYears(BirthDay);
     }
     public String getReasonForLeaving() {
         return ReasonForLeaving;

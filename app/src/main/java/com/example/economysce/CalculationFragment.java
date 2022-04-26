@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -24,11 +25,13 @@ import com.example.economysce.Class.DeathProbability;
 import com.example.economysce.Class.LeavingProbability;
 import com.example.economysce.Class.User;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +76,6 @@ public class CalculationFragment extends Fragment {
                 SalaryGrowthRate = 0.03;
             users.add(user);
             reductionList.add(getUserPayment(user));
-            text += user.getName() +" " +user.getLastName() + " פיצויים: " + reductionList.get(0) + "\n";
-            index++;
         }
         calculationAdapter = new CalculationAdapter(getContext(), users, reductionList);
         recyclerView.setAdapter(calculationAdapter);
@@ -107,28 +108,53 @@ public class CalculationFragment extends Fragment {
             case 1:{
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     saveFile();
-                else{
-
-                }
+                else{ }
             }
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void saveFile(){
+        // Create a new workbook
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+        HSSFSheet hssfSheet = hssfWorkbook.createSheet("Part1 Sol");
+        //headers
+        HSSFRow title_Row = hssfSheet.createRow(0);
+        HSSFCell title_id = title_Row.createCell(0);
+        HSSFCell title_name = title_Row.createCell(1);
+        HSSFCell title_lastname = title_Row.createCell(2);
+        HSSFCell title_payment = title_Row.createCell(3);
+        title_id.setCellValue("מסד");
+        title_name.setCellValue("שם");
+        title_lastname.setCellValue("שם משפחה");
+        title_payment.setCellValue("פיצויים");
+        //insert data
+        for(int i=0; i<users.size();i++) {
+            HSSFRow hssfRow = hssfSheet.createRow(i+1);
+            HSSFCell id = hssfRow.createCell(0);
+            HSSFCell name = hssfRow.createCell(1);
+            HSSFCell lastname = hssfRow.createCell(2);
+            HSSFCell payment = hssfRow.createCell(3);
+            id.setCellValue(users.get(i).getId());
+            name.setCellValue(users.get(i).getName());
+            lastname.setCellValue(users.get(i).getLastName());
+            payment.setCellValue((int)reductionList.get(i).doubleValue());
+        }
         File root = android.os.Environment.getExternalStorageDirectory();
         File dir = new File (root.getAbsolutePath() + "/download");
         dir.mkdirs();
-        File file = new File(dir, "myData.txt");
+        File file = new File(dir, "Sol.xls");
         try {
-            FileOutputStream f = new FileOutputStream(file);
-            PrintWriter pw = new PrintWriter(f);
-            pw.println(text);
-            pw.flush();
-            pw.close();
-            f.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            if (!file.exists()){
+                file.createNewFile();
+            }
+            FileOutputStream fileOutputStream= new FileOutputStream(file);
+            hssfWorkbook.write(fileOutputStream);
+            if (fileOutputStream!=null){
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            }
+            Toast.makeText(context, "קובץ אקסל נוצר בהצלחה!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -136,6 +162,9 @@ public class CalculationFragment extends Fragment {
         //have left date
         if(!user.getReasonForLeaving().equals(""))
             return 0.0;
+        //age higher than retirement
+        else if(CheckRetirement(user))
+            return user.getSalary() * user.getVetek();
         //Worker A
         else if(user.getAcceptSection14() == null)
             return CalcWorkerAorB(user);
@@ -144,6 +173,15 @@ public class CalculationFragment extends Fragment {
             return CalcWorkerAorB(user);
         //Worker C
         return CalcWorkerC(user);
+    }
+    private boolean CheckRetirement(User user){
+        if(user.getGender().equals("M"))
+            if( user.getAge() > 67)
+                return true;
+            else
+            if( user.getAge() > 64)
+                return true;
+        return false;
     }
     private int getW(User user){
         int w = 67;
@@ -187,22 +225,119 @@ public class CalculationFragment extends Fragment {
                ( ( user.getSalary() * user.getVetek() * (1 - user.getPercentSection14() ) * Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * p * ( 1 - getFired(w - 1) - getDeath(w - 1, user.getGender()) - getLeaving(w - 1) ) ) / Math.pow(1 + data.getDiscountRateList().get(t-1).getPercent(), w - x + 0.5) );
         return sol;
     }
-    private double CalcWorkerC(User user){
-        double sol = 0, YearToSection14 = getYearsToSection14(user), Section14Percent = user.getPercentSection14() ;
-        user.setPercentSection14(0);
-        int w = getW(user), x = user.getAge(), t;
-        for (t = 1; t <= w - x - 2; t++) {
-            if(YearToSection14 < 0)
-                user.setPercentSection14(Section14Percent);
-            sol += CalcFired(user, t, x) + CalcLeaving(user, t, x) + CalcDeath(user, t, x);
-            YearToSection14--;
+    private double CalcWorkerC(User user){ return Section1(user) + Section2(user) + Section3(user) + Section4(user) + Section5(user) + Section6(user) + Section7(user); }
+    private double Section1(User user) {
+        double sum = 0;
+        double LastSalary = user.getSalary();
+        double Seniority = user.getVetek();
+        double Section14Rate = user.getPercentSection14() / 100;
+        int W = getW(user);
+        int X = user.getAge();
+        double YearsToSection14 = getYearsToSection14(user);
+        for( int t = 0; t <= W - X - 2 ; t++){
+            double Px = P(user, t + 1);
+            double Qx1 = getFired( X + t + 1);
+            double discountRate = data.getDiscountRateList().get(t).getPercent() ;
+            sum += LastSalary * YearsToSection14  * ( Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * Px * Qx1 / Math.pow(1 + discountRate, t + 0.5) );
         }
-        double  p = P(user, t + 1 );
-        sol += ( ( user.getSalary() * user.getVetek() * (1 - user.getPercentSection14() ) * Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * p * getFired(w - 1) ) / Math.pow(1 + data.getDiscountRateList().get(t-1).getPercent(), w - x + 0.5) ) +
-               ( ( user.getSalary() * user.getVetek() * (1 - user.getPercentSection14() ) * Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * p *getDeath(w - 1, user.getGender()) ) / Math.pow(1 + data.getDiscountRateList().get(t-1).getPercent(), w - x + 0.5) ) +
-               ( user.getAssetValue() * p * getLeaving(w - 1) ) +
-               ( ( user.getSalary() * user.getVetek() * (1 - user.getPercentSection14() ) * Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * p * ( 1 - getFired(w - 1) - getDeath(w - 1, user.getGender()) - getLeaving(w - 1) ) ) / Math.pow(1 + data.getDiscountRateList().get(t-1).getPercent(), w - x + 0.5) );
-        return sol;
+        for( int t = 0; t <= W - X - 2 ; t++){
+            double Px = P(user, t + 1);
+            double Qx1 = getFired( X + t + 1 );
+            double discountRate = data.getDiscountRateList().get(t).getPercent() ;
+            sum += LastSalary * (Seniority - YearsToSection14) * (1 - Section14Rate) * ( Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * Px * Qx1 / Math.pow(1 + discountRate, t + 0.5) );
+        }
+        return sum;
+    }
+    private double Section2(User user) {
+        double sum = 0;
+        double LastSalary = user.getSalary();
+        double Seniority = user.getVetek();
+        double Section14Rate = user.getPercentSection14() / 100;
+        int W = getW(user);
+        int X = user.getAge();
+        double YearsToSection14 = getYearsToSection14(user);
+        for( int t = 0; t <= W - X - 2 ; t++){
+            double Px = P(user, t + 1);
+            double Qx3 = getDeath( X + t + 1 , user.getGender());
+            double discountRate = data.getDiscountRateList().get(t).getPercent() ;
+            sum += LastSalary * YearsToSection14  * ( Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * Px * Qx3 / Math.pow(1 + discountRate, t + 0.5) );
+        }
+        for( int t = 0; t <= W - X - 2 ; t++){
+            double Px = P(user, t + 1);
+            double Qx3 = getDeath( X + t + 1 , user.getGender());
+            double discountRate = data.getDiscountRateList().get(t).getPercent() ;
+            sum += LastSalary * (Seniority - YearsToSection14) * (1 - Section14Rate) * ( Math.pow(1 + getSalaryGrowthRate(t), t + 0.5) * Px * Qx3 / Math.pow(1 + discountRate, t + 0.5) );
+        }
+        return sum;
+    }
+    private double Section3(User user) {
+        double sum = 0;
+        double AssetValue = user.getAssetValue();
+        int W = getW(user);
+        int X = user.getAge();
+        for( int t = 0; t <= W - X - 2 ; t++){
+            double Px = P(user, t + 1);
+            double Qx2 = getLeaving( X + t + 1);
+            sum += AssetValue * Px * Qx2;
+        }
+        return sum;
+    }
+    private double Section4(User user) {
+        double sum = 0;
+        double LastSalary = user.getSalary();
+        double Seniority = user.getVetek();
+        double Section14Rate = user.getPercentSection14() / 100;
+        int W = getW(user);
+        int X = user.getAge();
+        double YearsToSection14 = getYearsToSection14(user);
+        double Px = P(user, W - X - 1);
+        double Qx1 = getFired( W - 1 );
+        double discountRate = data.getDiscountRateList().get(W - X - 1).getPercent() ;
+        sum += LastSalary * YearsToSection14  * ( Math.pow(1 + getSalaryGrowthRate(W - X - 1), W - X + 0.5) * Px * Qx1 / Math.pow(1 + discountRate, W - X + 0.5));
+        sum += LastSalary * (Seniority - YearsToSection14) * (1 - Section14Rate)  * ( Math.pow(1 + getSalaryGrowthRate(W - X - 1), W - X + 0.5) * Px * Qx1 / Math.pow(1 + discountRate, W - X + 0.5));
+        return sum;
+    }
+    private double Section5(User user) {
+        double sum = 0;
+        double LastSalary = user.getSalary();
+        double Seniority = user.getVetek();
+        double Section14Rate = user.getPercentSection14() / 100;
+        int W = getW(user);
+        int X = user.getAge();
+        double YearsToSection14 = getYearsToSection14(user);
+        double Px = P(user, W - X - 1);
+        double Qx3 = getDeath( W - 1, user.getGender() );
+        double discountRate = data.getDiscountRateList().get(W - X - 1).getPercent() ;
+        sum += LastSalary * YearsToSection14  * ( Math.pow(1 + getSalaryGrowthRate(W - X - 1), W - X - 1 + 0.5) * Px * Qx3 / Math.pow(1 + discountRate, W - X - 1 + 0.5));
+        sum += LastSalary * (Seniority - YearsToSection14) * (1 - Section14Rate)  * ( Math.pow(1 + getSalaryGrowthRate(W - X - 1), W - X - 1 + 0.5) * Px * Qx3 / Math.pow(1 + discountRate, W - X - 1 + 0.5));
+        return sum;
+    }
+    private double Section6(User user) {
+        double sum = 0;
+        double AssetValue = user.getAssetValue();
+        int W = getW(user);
+        int X = user.getAge();
+        double Px = P(user, W - X - 1);
+        double Qx2 = getLeaving( W - 1);
+        sum += AssetValue * Px * Qx2;
+        return sum;
+    }
+    private double Section7(User user) {
+        double sum = 0;
+        double LastSalary = user.getSalary();
+        double Seniority = user.getVetek();
+        double Section14Rate = user.getPercentSection14() / 100;
+        int W = getW(user);
+        int X = user.getAge();
+        double Qx1 = getFired( W - 1 );
+        double Qx2 = getLeaving( W - 1 );
+        double Qx3 = getDeath( W - 1 , user.getGender());
+        double Px = P(user, W - X - 1);
+        double discountRate = data.getDiscountRateList().get(W - X - 1).getPercent() ;
+        double YearsToSection14 = getYearsToSection14(user);
+        sum += LastSalary * YearsToSection14  * ( Math.pow(1 + getSalaryGrowthRate(W - X - 1), W - X) * Px * ( 1 - Qx1 - Qx2 - Qx3 ) / Math.pow(1 + discountRate, W - X + 0.5));
+        sum += LastSalary * (Seniority - YearsToSection14) * (1 - Section14Rate)  * ( Math.pow(1 + getSalaryGrowthRate(W - X - 1), W - X) * Px * ( 1 - Qx1 - Qx2 - Qx3 ) / Math.pow(1 + discountRate, W - X));
+        return sum;
     }
     private double getFired(int age){
         double Fired = 0;
