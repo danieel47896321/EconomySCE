@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="11dp"
         android:layout_marginRight="11dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,140 +22,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/fragmentUserLastName"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text=", שם משפחה: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/fragmentUserName"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserName"
-                app:layout_constraintTop_toTopOf="@+id/fragmentUserName"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/fragmentUserGender"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text=", מין: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/fragmentUserLastName"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserLastName"
-                app:layout_constraintTop_toTopOf="@+id/fragmentUserLastName"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/fragmentUserBirthDay"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="תאריך לידה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserId"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserId" />
-
-            <TextView
-                android:id="@+id/fragmentUserStartWork"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="תאריך תחילת עבודה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserBirthDay"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserBirthDay" />
-
-            <TextView
-                android:id="@+id/fragmentUserSalary"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="שכר: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserStartWork"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserStartWork" />
-
-            <TextView
-                android:id="@+id/fragmentUserVetek"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="ותק: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserSalary"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserSalary" />
-
-            <TextView
-                android:id="@+id/fragmentUserSection14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="תאריך קבלת סעיף 14: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserVetek"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserVetek" />
-
-            <TextView
-                android:id="@+id/fragmentUserPercent"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="אחוז סעיף 14: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserSection14"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserSection14" />
-
-            <TextView
-                android:id="@+id/fragmentUserAssetValue"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="שווי נכס: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserPercent"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserPercent" />
-
-            <TextView
-                android:id="@+id/fragmentUserLeftDate"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="תאריך עזיבה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserAssetValue"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserAssetValue" />
-
-            <TextView
-                android:id="@+id/fragmentUserLeftReason"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="תאריך עזיבה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragmentUserLeftDate"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserLeftDate" />
-
-            <TextView
-                android:id="@+id/fragmentUserId"
+                android:id="@+id/Id"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
@@ -168,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/fragmentUserName"
+                android:id="@+id/FirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -177,9 +44,155 @@
                 android:textColor="@color/default_color"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/fragmentUserId"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserId"
-                app:layout_constraintTop_toTopOf="@+id/fragmentUserId" />
+                app:layout_constraintBottom_toBottomOf="@+id/Id"
+                app:layout_constraintEnd_toStartOf="@+id/Id"
+                app:layout_constraintTop_toTopOf="@+id/Id" />
+
+
+            <TextView
+                android:id="@+id/LastName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text=", שם משפחה: "
+                android:textColor="@color/default_color"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/FirstName"
+                app:layout_constraintEnd_toStartOf="@+id/FirstName"
+                app:layout_constraintTop_toTopOf="@+id/FirstName"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/Gender"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text=", מין: "
+                android:textColor="@color/default_color"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/LastName"
+                app:layout_constraintEnd_toStartOf="@+id/LastName"
+                app:layout_constraintTop_toTopOf="@+id/LastName"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/Birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="תאריך לידה: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/Id"
+                app:layout_constraintTop_toBottomOf="@+id/Id" />
+
+            <TextView
+                android:id="@+id/StartWorkDate"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="תאריך תחילת עבודה: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/Birthday"
+                app:layout_constraintTop_toBottomOf="@+id/Birthday" />
+
+            <TextView
+                android:id="@+id/Salary"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="שכר: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/StartWorkDate"
+                app:layout_constraintTop_toBottomOf="@+id/StartWorkDate" />
+
+            <TextView
+                android:id="@+id/Seniority"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="ותק: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/Salary"
+                app:layout_constraintTop_toBottomOf="@+id/Salary" />
+
+            <TextView
+                android:id="@+id/Section14StartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="תאריך קבלת סעיף 14: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/Seniority"
+                app:layout_constraintTop_toBottomOf="@+id/Seniority" />
+
+            <TextView
+                android:id="@+id/Section14Percent"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="אחוז סעיף 14: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/Section14StartDate"
+                app:layout_constraintTop_toBottomOf="@+id/Section14StartDate" />
+
+            <TextView
+                android:id="@+id/AssetValue"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="שווי נכס: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/Section14Percent"
+                app:layout_constraintTop_toBottomOf="@+id/Section14Percent" />
+
+            <TextView
+                android:id="@+id/LeftDate"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="תאריך עזיבה: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/AssetValue"
+                app:layout_constraintTop_toBottomOf="@+id/AssetValue" />
+
+            <TextView
+                android:id="@+id/ReasonForLeaving"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="תאריך עזיבה: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/LeftDate"
+                app:layout_constraintTop_toBottomOf="@+id/LeftDate" />
+
+            <TextView
+                android:id="@+id/Deposits"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="הפקדות: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/ReasonForLeaving"
+                app:layout_constraintTop_toBottomOf="@+id/ReasonForLeaving" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -10,10 +10,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,20 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/fragmentUserCompensation"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="סכום הפיצוים: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserId"
-                app:layout_constraintTop_toBottomOf="@+id/fragmentUserId" />
 
             <TextView
-                android:id="@+id/fragmentUserId"
+                android:id="@+id/Id"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="8dp"
@@ -47,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/fragmentUserName"
+                android:id="@+id/FirstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -56,22 +46,89 @@
                 android:textColor="@color/default_color"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/fragmentUserId"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserId"
-                app:layout_constraintTop_toTopOf="@+id/fragmentUserId" />
+                app:layout_constraintBottom_toBottomOf="@+id/Id"
+                app:layout_constraintEnd_toStartOf="@+id/Id"
+                app:layout_constraintTop_toTopOf="@+id/Id" />
 
             <TextView
-                android:id="@+id/fragmentUserLastName"
+                android:id="@+id/LastName"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text=", שם משפחה: "
                 android:textColor="@color/default_color"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/fragmentUserName"
-                app:layout_constraintEnd_toStartOf="@+id/fragmentUserName"
-                app:layout_constraintTop_toTopOf="@+id/fragmentUserName"
+                app:layout_constraintBottom_toBottomOf="@+id/FirstName"
+                app:layout_constraintEnd_toStartOf="@+id/FirstName"
+                app:layout_constraintTop_toTopOf="@+id/FirstName"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/Compensation"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:text="סכום הפיצוים: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/Id"
+                app:layout_constraintTop_toBottomOf="@+id/Id" />
+
+            <TextView
+                android:id="@+id/CostOfOnGoingService"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="עלות שירות שוטף: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/Compensation"
+                app:layout_constraintTop_toBottomOf="@+id/Compensation" />
+
+            <TextView
+                android:id="@+id/CostOfServiceExpectation"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="עלות יוון שוטף: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/CostOfOnGoingService"
+                app:layout_constraintTop_toBottomOf="@+id/CostOfOnGoingService" />
+
+            <TextView
+                android:id="@+id/ActuarialLossGainInLiability"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="הפסד/רווח אקטוארי בהתחייבות: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/CostOfServiceExpectation"
+                app:layout_constraintTop_toBottomOf="@+id/CostOfServiceExpectation" />
+
+            <TextView
+                android:id="@+id/ExpectedAssetsReturns"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="תשואה צפויה על נכסי התוכנית: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/ActuarialLossGainInLiability"
+                app:layout_constraintTop_toBottomOf="@+id/ActuarialLossGainInLiability" />
+
+            <TextView
+                android:id="@+id/ActuarialLossGainInAssets"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="תשואה צפויה על נכסי התוכנית: "
+                android:textColor="@color/default_color"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/ExpectedAssetsReturns"
+                app:layout_constraintTop_toBottomOf="@+id/ExpectedAssetsReturns" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

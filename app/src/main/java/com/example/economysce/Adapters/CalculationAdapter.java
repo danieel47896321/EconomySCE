@@ -9,19 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.economysce.Class.User;
+import com.example.economysce.Class.EmployeeCalculation;
 import com.example.economysce.R;
 
 import java.util.List;
 
 public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.ViewHolder> {
     private Context context;
-    private List<User> users;
-    private List<Double> reductions;
-    public CalculationAdapter(Context context, List<User> users, List<Double> reductions){
+    private List<EmployeeCalculation> employeeCalculationList;
+    public CalculationAdapter(Context context, List<EmployeeCalculation> employeeCalculationList){
         this.context = context;
-        this.users = users;
-        this.reductions = reductions;
+        this.employeeCalculationList = employeeCalculationList;
     }
     @NonNull
     @Override
@@ -31,26 +29,32 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
     }
     @Override
     public void onBindViewHolder(@NonNull CalculationAdapter.ViewHolder holder, int position) {
-        User user = users.get(position);
-        Double reduction = reductions.get(position);
-        holder.fragmentUserId.setText("."+user.getId());
-        holder.fragmentUserName.setText("שם: " +user.getName());
-        holder.fragmentUserLastName.setText(", שם משפחה: "+user.getLastName());
-        holder.fragmentUserCompensation.setText("סכום הפיצויים: "+(int)reduction.doubleValue());
+        EmployeeCalculation employeeCalculation = employeeCalculationList.get(position);
+        holder.Id.setText("." + employeeCalculation.getId());
+        holder.FirstName.setText("שם: " + employeeCalculation.getName());
+        holder.LastName.setText(", שם משפחה: " + employeeCalculation.getLastName());
+        holder.Compensation.setText("סכום הפיצויים: " + String.format("%.02f",employeeCalculation.getCompensation()));
+        holder.CostOfOnGoingService.setText("עלות שירות שוטף: " + String.format("%.02f",employeeCalculation.getOngoingServiceCost()));
+        holder.CostOfServiceExpectation.setText("עלות יוון שוטף: " + String.format("%.02f",employeeCalculation.getDiscountCost()));
+        holder.ActuarialLossGainInLiability.setText("הפסד/רווח אקטוארי בהתחייבות: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInLiability()));
+        holder.ExpectedAssetsReturns.setText("תשואה צפויה על נכסי התוכנית: " + String.format("%.02f",employeeCalculation.getExpectedAssetsReturns()));
+        holder.ActuarialLossGainInAssets.setText("תשואה צפויה על נכסי התוכנית: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInAssets()));
     }
     @Override
-    public int getItemCount() { return users.size(); }
+    public int getItemCount() { return employeeCalculationList.size(); }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView fragmentUserId;
-        public TextView fragmentUserName;
-        public TextView fragmentUserLastName;
-        public TextView fragmentUserCompensation;
+        public TextView Id, FirstName, LastName, Compensation, CostOfOnGoingService, CostOfServiceExpectation, ActuarialLossGainInLiability, ExpectedAssetsReturns, ActuarialLossGainInAssets;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            fragmentUserId = itemView.findViewById(R.id.fragmentUserId);
-            fragmentUserName = itemView.findViewById(R.id.fragmentUserName);
-            fragmentUserLastName = itemView.findViewById(R.id.fragmentUserLastName);
-            fragmentUserCompensation = itemView.findViewById(R.id.fragmentUserCompensation);
+            Id = itemView.findViewById(R.id.Id);
+            FirstName = itemView.findViewById(R.id.FirstName);
+            LastName = itemView.findViewById(R.id.LastName);
+            Compensation = itemView.findViewById(R.id.Compensation);
+            CostOfOnGoingService = itemView.findViewById(R.id.CostOfOnGoingService);
+            CostOfServiceExpectation = itemView.findViewById(R.id.CostOfServiceExpectation);
+            ActuarialLossGainInLiability = itemView.findViewById(R.id.ActuarialLossGainInLiability);
+            ExpectedAssetsReturns = itemView.findViewById(R.id.ExpectedAssetsReturns);
+            ActuarialLossGainInAssets = itemView.findViewById(R.id.ActuarialLossGainInAssets);
         }
     }
 }
