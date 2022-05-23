@@ -1,9 +1,5 @@
 package com.example.economysce.Class;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -23,8 +19,11 @@ public class Employee {
     private double Deposits;
     private int Age;
     private String ReasonForLeaving;
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public Employee(String id, String firstName, String lastName, String gender, myDate birthDay, myDate startWork, double salary, myDate section14StartDate, double section14Percent, double assetValue, myDate leftDate, String reasonForLeaving, double deposits) {
+    private double AssetPayment;
+    private double CheckCompletion;
+    private double RestOpen;
+    private double RestAsset;
+    public Employee(String id, String firstName, String lastName, String gender, myDate birthDay, myDate startWork, double salary, myDate section14StartDate, double section14Percent, double assetValue, double deposits, myDate leftDate, String reasonForLeaving,double AssetPayment, double CheckCompletion,double RestOpen, double RestAsset) {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
@@ -66,9 +65,32 @@ public class Employee {
             years -=1;
         return years;
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private double CalculateSeniority(Date date){
         Date date1 = new Date(2021,12,31);
         return ChronoUnit.DAYS.between(date.toInstant(), date1.toInstant())/365.25;
+    }
+    public double getAssetPayment() {
+        return AssetPayment;
+    }
+    public void setAssetPayment(double assetPayment) {
+        AssetPayment = assetPayment;
+    }
+    public double getCheckCompletion() {
+        return CheckCompletion;
+    }
+    public void setCheckCompletion(double checkCompletion) {
+        CheckCompletion = checkCompletion;
+    }
+    public double getRestOpen() {
+        return RestOpen;
+    }
+    public void setRestOpen(double restOpen) {
+        RestOpen = restOpen;
+    }
+    public double getRestAsset() {
+        return RestAsset;
+    }
+    public void setRestAsset(double restAsset) {
+        RestAsset = restAsset;
     }
 }

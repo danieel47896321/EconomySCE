@@ -10,5 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="sky">#0B57DC</color>
     <color name="blue">#0B57DC</color>
+    <color name="blue2">#0979DA</color>
+    <color name="red">#F80A0A</color>
     <color name="default_color">#808080</color>
 </resources>

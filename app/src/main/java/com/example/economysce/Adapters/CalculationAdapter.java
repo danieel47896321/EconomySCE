@@ -38,7 +38,7 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
         holder.CostOfServiceExpectation.setText("עלות יוון שוטף: " + String.format("%.02f",employeeCalculation.getDiscountCost()));
         holder.ActuarialLossGainInLiability.setText("הפסד/רווח אקטוארי בהתחייבות: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInLiability()));
         holder.ExpectedAssetsReturns.setText("תשואה צפויה על נכסי התוכנית: " + String.format("%.02f",employeeCalculation.getExpectedAssetsReturns()));
-        holder.ActuarialLossGainInAssets.setText("תשואה צפויה על נכסי התוכנית: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInAssets()));
+        holder.ActuarialLossGainInAssets.setText("רווחים/הפסדים אקטוארים נכסים: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInAssets()));
     }
     @Override
     public int getItemCount() { return employeeCalculationList.size(); }
