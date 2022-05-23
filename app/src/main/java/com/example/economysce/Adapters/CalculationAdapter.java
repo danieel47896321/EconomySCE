@@ -36,9 +36,15 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
         holder.Compensation.setText("סכום הפיצויים: " + String.format("%.02f",employeeCalculation.getCompensation()));
         holder.CostOfOnGoingService.setText("עלות שירות שוטף: " + String.format("%.02f",employeeCalculation.getOngoingServiceCost()));
         holder.CostOfServiceExpectation.setText("עלות יוון שוטף: " + String.format("%.02f",employeeCalculation.getDiscountCost()));
-        holder.ActuarialLossGainInLiability.setText("הפסד/רווח אקטוארי בהתחייבות: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInLiability()));
+        if(employeeCalculation.getActuarialLossGainInLiability() < 0)
+            holder.ActuarialLossGainInLiability.setText("הפסד/רווח אקטוארי בהתחייבות: " + String.format("%.02f",Math.abs(employeeCalculation.getActuarialLossGainInLiability())) + "-");
+        else
+            holder.ActuarialLossGainInLiability.setText("הפסד/רווח אקטוארי בהתחייבות: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInLiability()));
         holder.ExpectedAssetsReturns.setText("תשואה צפויה על נכסי התוכנית: " + String.format("%.02f",employeeCalculation.getExpectedAssetsReturns()));
-        holder.ActuarialLossGainInAssets.setText("רווחים/הפסדים אקטוארים נכסים: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInAssets()));
+        if(employeeCalculation.getActuarialLossGainInLiability() < 0)
+            holder.ActuarialLossGainInAssets.setText("רווחים/הפסדים אקטוארים נכסים: " + String.format("%.02f",Math.abs(employeeCalculation.getActuarialLossGainInAssets())) + "-");
+        else
+            holder.ActuarialLossGainInAssets.setText("רווחים/הפסדים אקטוארים נכסים: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInAssets()));
     }
     @Override
     public int getItemCount() { return employeeCalculationList.size(); }

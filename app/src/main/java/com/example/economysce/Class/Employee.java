@@ -35,6 +35,10 @@ public class Employee {
         Section14Percent = section14Percent / 100;
         AssetValue = assetValue;
         LeftDate = leftDate;
+        this.RestOpen = RestOpen;
+        this.RestAsset = RestAsset;
+        this.CheckCompletion = CheckCompletion;
+        this.AssetPayment = AssetPayment;
         ReasonForLeaving = reasonForLeaving;
         Deposits = deposits;
         Age = CalculateAge(BirthDay.getDate());

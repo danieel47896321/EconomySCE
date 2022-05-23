@@ -72,7 +72,7 @@ public class CalculationFragment extends Fragment {
             costOfServiceExpectation = CostOfServiceExpectation(employee, compensation, costOfOnGoingService);
             actuarialLossGainInLiability = ActuarialLossGainInLiability(employee, compensation,costOfOnGoingService,costOfServiceExpectation);
             expectedAssetsReturns = ExpectedAssetsReturns(employee);
-            actuarialLossGainInAssets = ActuarialLossGainInAssets(employee);
+            actuarialLossGainInAssets = ActuarialLossGainInAssets(employee,expectedAssetsReturns);
             employeeCalculationList.add(new EmployeeCalculation(employee.getId(),employee.getFirstName(),employee.getLastName(),compensation,costOfOnGoingService,costOfServiceExpectation,actuarialLossGainInLiability,expectedAssetsReturns,actuarialLossGainInAssets));
         }
         calculationAdapter = new CalculationAdapter(getContext(), employeeCalculationList);
@@ -317,17 +317,16 @@ public class CalculationFragment extends Fragment {
         lastSalary = employee.getSalary();
         seniority = employee.getSeniority();
         section14Percent = employee.getSection14Percent();
-        if (lastSalary * seniority * (1 - section14Percent) > 0) {
-            return compensation / (lastSalary * seniority * (1 - section14Percent));
-        }
-        return 0;
+        if(employee.getLeftDate() != null || section14Percent == 1)
+            return 1;
+        return compensation / (lastSalary * seniority * (1 - section14Percent));
     }
     private double CostOfServiceExpectation(Employee employee, double compensation, double costOfOnGoingService) {
         int i = CalcEx(employee);
         double discountRate = data.getDiscountRateList().get(i).getPercent();
-        double RestOpen = employee.getRestOpen();
-        double RestAsset = employee.getRestAsset();
-        return compensation * discountRate + (costOfOnGoingService - RestOpen - RestAsset) * (discountRate/2);
+        double AssetPayment = employee.getAssetPayment();
+        double CheckCompletion = employee.getCheckCompletion();
+        return employee.getRestOpen() * discountRate  + (costOfOnGoingService - AssetPayment - CheckCompletion) * ( discountRate /2);
     }
     private int CalcEx(Employee employee) {
         double sum = 0;
@@ -357,11 +356,16 @@ public class CalculationFragment extends Fragment {
     private double ExpectedAssetsReturns(Employee employee) {
         int i = CalcEx(employee);
         double discountRate = data.getDiscountRateList().get(i).getPercent();
-        return 90000 * discountRate + (20000-0) * (discountRate/2);
+        double Deposits = employee.getDeposits();
+        double AssetPayment = employee.getAssetPayment();
+        return employee.getRestAsset() * discountRate + (Deposits-AssetPayment) * (discountRate/2);
     }
-    private double ActuarialLossGainInAssets(Employee employee) {
+    private double ActuarialLossGainInAssets(Employee employee,double expectedAssetsReturns) {
+        double AssetValue = employee.getAssetValue();
         double RestAsset = employee.getRestAsset();
-        return RestAsset;
+        double Deposits = employee.getDeposits();
+        double AssetPayment = employee.getAssetPayment();
+        return AssetValue - RestAsset - expectedAssetsReturns - Deposits + AssetPayment;
     }
     public void CreateExcel(){
         buttonCreateExcel.setOnClickListener(new View.OnClickListener() {
@@ -401,10 +405,20 @@ public class CalculationFragment extends Fragment {
         HSSFCell title_name = title_Row.createCell(1);
         HSSFCell title_lastname = title_Row.createCell(2);
         HSSFCell title_payment = title_Row.createCell(3);
+        HSSFCell title_costOfOnGoingService = title_Row.createCell(4);
+        HSSFCell title_costOfServiceExpectation = title_Row.createCell(5);
+        HSSFCell title_actuarialLossGainInLiability = title_Row.createCell(6);
+        HSSFCell title_expectedAssetsReturns = title_Row.createCell(7);
+        HSSFCell title_actuarialLossGainInAssets = title_Row.createCell(8);
         title_id.setCellValue("מסד");
         title_name.setCellValue("שם");
         title_lastname.setCellValue("שם משפחה");
-        title_payment.setCellValue("פיצויים");
+        title_payment.setCellValue("יתרת סגירה(האקטון חלק 1)");
+        title_costOfOnGoingService.setCellValue("עלות שירות שוטף");
+        title_costOfServiceExpectation.setCellValue("עלות היוון");
+        title_actuarialLossGainInLiability.setCellValue("הפסד אקטוארי");
+        title_expectedAssetsReturns.setCellValue("תשואה צפויה");
+        title_actuarialLossGainInAssets.setCellValue("רווח אקטוארי");
         //insert data
         for(int i = 0; i< employeeCalculationList.size(); i++) {
             HSSFRow hssfRow = hssfSheet.createRow(i+1);
@@ -412,10 +426,20 @@ public class CalculationFragment extends Fragment {
             HSSFCell name = hssfRow.createCell(1);
             HSSFCell lastname = hssfRow.createCell(2);
             HSSFCell payment = hssfRow.createCell(3);
+            HSSFCell costOfOnGoingService = hssfRow.createCell(4);
+            HSSFCell costOfServiceExpectation = hssfRow.createCell(5);
+            HSSFCell actuarialLossGainInLiability = hssfRow.createCell(6);
+            HSSFCell expectedAssetsReturns = hssfRow.createCell(7);
+            HSSFCell actuarialLossGainInAssets = hssfRow.createCell(8);
             id.setCellValue(employeeCalculationList.get(i).getId());
             name.setCellValue(employeeCalculationList.get(i).getName());
             lastname.setCellValue(employeeCalculationList.get(i).getLastName());
             payment.setCellValue((int)employeeCalculationList.get(i).getCompensation());
+            costOfOnGoingService.setCellValue((int)employeeCalculationList.get(i).getOngoingServiceCost());
+            costOfServiceExpectation.setCellValue((int)employeeCalculationList.get(i).getDiscountCost());
+            actuarialLossGainInLiability.setCellValue((int)employeeCalculationList.get(i).getActuarialLossGainInLiability());
+            expectedAssetsReturns.setCellValue((int)employeeCalculationList.get(i).getExpectedAssetsReturns());
+            actuarialLossGainInAssets.setCellValue((int)employeeCalculationList.get(i).getActuarialLossGainInAssets());
         }
         File root = android.os.Environment.getExternalStorageDirectory();
         File dir = new File (root.getAbsolutePath() + "/download");
