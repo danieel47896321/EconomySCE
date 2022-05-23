@@ -351,7 +351,8 @@ public class CalculationFragment extends Fragment {
     }
     private double ActuarialLossGainInLiability(Employee employee, double compensation, double costOfOnGoingService, double costOfServiceExpectation) {
         double RestOpen = employee.getRestOpen();
-        return compensation - RestOpen - costOfOnGoingService - costOfServiceExpectation + 0;
+        double AssetPayment = employee.getAssetPayment();
+        return compensation - RestOpen - costOfOnGoingService - costOfServiceExpectation + AssetPayment;
     }
     private double ExpectedAssetsReturns(Employee employee) {
         int i = CalcEx(employee);
