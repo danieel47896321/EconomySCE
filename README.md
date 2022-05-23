@@ -1,6 +1,6 @@
 # EconomySCE!
-Part 1:
+Part 1 + 2:
 
-![CHEESE!](https://user-images.githubusercontent.com/74861262/165304053-2c9c07a2-9592-4c23-8faa-93314617fd4f.png)
-![CHEESE!](https://user-images.githubusercontent.com/74861262/165304724-b552f9ab-f23a-462d-b101-93f8f8a09865.png)
-![CHEESE!](https://user-images.githubusercontent.com/74861262/165304995-a4d6a0b3-bab6-4cc8-bcf6-9a67b9642d8d.png)
+![CHEESE!](https://user-images.githubusercontent.com/74861262/169756896-0d9ddc02-ac45-4685-9db8-77893f81f262.png)
+![CHEESE!](https://user-images.githubusercontent.com/74861262/169756946-3cf0bb1f-04fc-4913-9051-cffb725e9120.png)
+
