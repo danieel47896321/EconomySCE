@@ -5,6 +5,8 @@
     <string name="FirstName">First Name:</string>
     <string name="LastName">Last Name:</string>
     <string name="Gender">Gender:</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
     <string name="Compensation">Compensation:</string>
     <string name="Birthday">Birthday:</string>
     <string name="Section14StartDate">Section 14 Start Date:</string>

@@ -6,6 +6,8 @@
     <string name="FirstName">שם:</string>
     <string name="LastName">שם משפחה:</string>
     <string name="Gender">מין:</string>
+    <string name="Male">זכר</string>
+    <string name="Female">נקבה</string>
     <string name="Compensation">סכום הפיצויים:</string>
     <string name="Birthday">תאריך לידה:</string>
     <string name="Section14StartDate">תאריך קבלת סעיף 14:</string>

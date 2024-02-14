@@ -32,7 +32,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         holder.Id.setText(employee.getId() + ".");
         holder.FirstName.setText(context.getResources().getString(R.string.FirstName) + employee.getFirstName() + ", ");
         holder.LastName.setText(context.getResources().getString(R.string.LastName) + employee.getLastName() + ", ");
-        holder.Gender.setText(context.getResources().getString(R.string.Gender) + employee.getGender());
+        if(employee.getGender().equals("M")) {
+            holder.Gender.setText(context.getResources().getString(R.string.Gender) + " " + context.getResources().getString(R.string.Male));
+        } else {
+            holder.Gender.setText(context.getResources().getString(R.string.Gender) + " " + context.getResources().getString(R.string.Female));
+        }
         holder.Birthday.setText(context.getResources().getString(R.string.Birthday) + " " + employee.getBirthDay().getDay()+"/"+ employee.getBirthDay().getMonth()+"/"+ employee.getBirthDay().getYear() + " (" + getYears(employee.getBirthDay().getDate()) + ")");
         holder.StartWorkDate.setText(context.getResources().getString(R.string.StartWorkDate) + " " + employee.getStartWork().getDay()+"/"+ employee.getStartWork().getMonth()+"/"+ employee.getStartWork().getYear());
         holder.Salary.setText(context.getResources().getString(R.string.Salary) + " " + employee.getSalary());
