@@ -33,7 +33,7 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
         holder.Id.setText(employeeCalculation.getId() + ".");
         holder.FirstName.setText(context.getResources().getString(R.string.FirstName) + employeeCalculation.getName() + ", ");
         holder.LastName.setText(context.getResources().getString(R.string.LastName) + employeeCalculation.getLastName());
-        holder.Compensation.setText("סכום הפיצויים: " + String.format("%.02f",employeeCalculation.getCompensation()));
+        holder.Compensation.setText("סכום הפיצויים: "  + String.format("%.02f",employeeCalculation.getCompensation()));
         holder.CostOfOnGoingService.setText("עלות שירות שוטף: " + String.format("%.02f",employeeCalculation.getOngoingServiceCost()));
         holder.CostOfServiceExpectation.setText("עלות יוון שוטף: " + String.format("%.02f",employeeCalculation.getDiscountCost()));
         if(employeeCalculation.getActuarialLossGainInLiability() < 0)
