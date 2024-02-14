@@ -31,7 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         Employee employee = employees.get(position);
         holder.Id.setText(employee.getId() + ".");
         holder.FirstName.setText(context.getResources().getString(R.string.FirstName) + employee.getFirstName() + ", ");
-        holder.LastName.setText(context.getResources().getString(R.string.LastName) + employee.getLastName() + ", ");
+        holder.LastName.setText(context.getResources().getString(R.string.LastName) + employee.getLastName());
         if(employee.getGender().equals("M")) {
             holder.Gender.setText(context.getResources().getString(R.string.Gender) + " " + context.getResources().getString(R.string.Male));
         } else {
@@ -57,7 +57,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         if(employee.getLeftDate() == null)
             holder.LeftDate.setText(context.getResources().getString(R.string.LeftDate) + " -");
         else
-            holder.LeftDate.setText(context.getResources().getString(R.string.LeftDate) + " " + employee.getLeftDate().getDate()+"/"+ employee.getLeftDate().getMonth()+"/"+ employee.getLeftDate().getYear());
+            holder.LeftDate.setText(context.getResources().getString(R.string.LeftDate) + " " + employee.getLeftDate().getDay()+"/"+ employee.getLeftDate().getMonth()+"/"+ employee.getLeftDate().getYear());
         holder.Deposits.setText(context.getResources().getString(R.string.Deposits) + " " + employee.getDeposits());
     }
     private int getYears(Date date){

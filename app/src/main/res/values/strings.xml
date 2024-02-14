@@ -14,9 +14,9 @@
     <string name="StartWorkDate">Start Work Date:</string>
     <string name="Salary">Salary:</string>
     <string name="Seniority">Seniority:</string>
-    <string name="AssetValue">AssetValue:</string>
-    <string name="LeftDate">LeftDate:</string>
-    <string name="ReasonForLeaving">ReasonForLeaving:</string>
+    <string name="AssetValue">Asset Value:</string>
+    <string name="LeftDate">Left Date:</string>
+    <string name="ReasonForLeaving">Reason For Leaving:</string>
     <string name="Deposits">Deposits:</string>
     <string name="CostOfOnGoingService">Cost Of On Going Service:</string>
     <string name="CostOfServiceExpectation">Cost Of Service Expectation:</string>

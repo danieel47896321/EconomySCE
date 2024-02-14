@@ -22,29 +22,28 @@
                 android:paddingStart="5dp"
                 android:id="@+id/Id"
                 android:text="@string/ID"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 style="@style/TextView_Style"
                 android:paddingStart="0dp"
                 android:id="@+id/FirstName"
                 android:text="@string/FirstName"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 style="@style/TextView_Style"
                 android:paddingStart="0dp"
                 android:id="@+id/LastName"
                 android:text="@string/LastName"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
             <TextView
                 style="@style/TextView_Style"
-                android:paddingStart="0dp"
                 android:id="@+id/Gender"
-                android:text="@string/Gender"
-                android:textSize="20sp" />
-        </LinearLayout>
+                android:text="@string/Gender" />
 
             <TextView
                 style="@style/TextView_Style"
