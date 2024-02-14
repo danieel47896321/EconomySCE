@@ -27,13 +27,13 @@ public class Data {
     }
     private void AddUsers(){
         employeeList.clear();
-        employeeList.add(new Employee("1","גלוקמן ","חיים","M",new myDate(1985,10,9),new myDate(2013,6,10),12521,new myDate(2013,6,10),100,0,0,null,"",0,0,0,0));
-        employeeList.add(new Employee("2","אברגל ","שרה","F",new myDate(1985,9,23),new myDate(2014,1,10),32100,new myDate(2014,1,10),72,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("1","גלוקמן","חיים","M",new myDate(1985,10,9),new myDate(2013,6,10),12521,new myDate(2013,6,10),100,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("2","אברגל","שרה","F",new myDate(1985,9,23),new myDate(2014,1,10),32100,new myDate(2014,1,10),72,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("3","טרבלסי","מאיר","M",new myDate(1966,2,17),new myDate(1990,9,10),34897,null,0,464929,34897,new myDate(2021,6,1),"התפטרות",450000,0,200000,100000));
         employeeList.add(new Employee("4","אשכנזי","אירית","F",new myDate(1967,9,6),new myDate(2002,1,7),16716,null,0,118346,16716,null,"",0,0,200000,100000));
         employeeList.add(new Employee("5","קיופמן","נתנאל","M",new myDate(1967,9,28),new myDate(2000,3,1),18814,new myDate(2000,3,1),100,0,0,new myDate(2021,10,1),"התפטרות",0,0,0,0));
         employeeList.add(new Employee("6","קופרמן","משה","M",new myDate(1968,9,20),new myDate(1992,8,25),23709,null,0,253598,23709,new myDate(2021,7,15),"פיטורין",250000,35000,200000,100000));
-        employeeList.add(new Employee("7","לוי","חיה ","F",new myDate(1968,8,1),new myDate(2015,7,3),35831,new myDate(2015,7,3),100,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("7","לוי","חיה","F",new myDate(1968,8,1),new myDate(2015,7,3),35831,new myDate(2015,7,3),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("8","ברנבוים","צילה","F",new myDate(1969,8,13),new myDate(1994,2,1),16210,null,0,219785,16210,new myDate(2021,8,7),"פיטורין",220000,30000,200000,100000));
         employeeList.add(new Employee("9","מצטנר","אביגל","F",new myDate(1973,3,28),new myDate(2001,5,30),17695,new myDate(2001,5,30),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("10","גולדמן","אבי","M",new myDate(1973,9,11),new myDate(2016,8,21),14619,new myDate(2016,8,21),72,0,0,null,"",0,0,0,0));
@@ -47,7 +47,7 @@ public class Data {
         employeeList.add(new Employee("18","פטרוק","נקול","F",new myDate(1971,6,15),new myDate(2010,8,28),33499,new myDate(2010,8,28),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("19","וסרמן","אנטולי","M",new myDate(1972,2,12),new myDate(2016,10,30),32799,new myDate(2019,4,2),100,42266,0,null,"",0,0,50000,0));
         employeeList.add(new Employee("20","שמיר","נורית","F",new myDate(1973,4,2),new myDate(2016,11,28),14619,null,0,101439,14619,new myDate(2021,12,1),"התפטרות",90000,0,200000,100000));
-        employeeList.add(new Employee("21","שלמה ","משה","M",new myDate(1972,6,7),new myDate(2000,12,28),30702,new myDate(2000,12,28),100,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("21","שלמה","משה","M",new myDate(1972,6,7),new myDate(2000,12,28),30702,new myDate(2000,12,28),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("22","בואדנו","טל","F",new myDate(1972,9,24),new myDate(2010,12,10),70419,new myDate(2019,3,31),72,150000,0,null,"",0,0,50000,0));
         employeeList.add(new Employee("23","לויטין","בוריס","M",new myDate(1973,2,28),new myDate(2016,1,30),36970,new myDate(2019,3,31),100,80000,0,new myDate(2021,12,6),"התפטרות",80000,0,50000,0));
         employeeList.add(new Employee("24","בוזגלו","אור","M",new myDate(1980,7,21),new myDate(2016,11,1),36855,new myDate(2016,11,1),100,0,0,null,"",0,0,0,0));
@@ -111,7 +111,7 @@ public class Data {
         employeeList.add(new Employee("82","נחמני","חגית","F",new myDate(1975,3,15),new myDate(2015,8,18),30702,new myDate(2015,8,18),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("83","שבתאי","ליאור","F",new myDate(1979,1,20),new myDate(2010,10,3),20562,new myDate(2019,3,31),100,150000,0,new myDate(2021,8,1),"התפטרות",150000,0,50000,0));
         employeeList.add(new Employee("84","ורניק","בוריס","M",new myDate(1976,12,3),new myDate(2015,10,29),29583,new myDate(2015,10,29),100,0,0,null,"",0,0,0,0));
-        employeeList.add(new Employee("85","כץ ","עינב","F",new myDate(1977,11,26),new myDate(2008,3,15),13919,new myDate(2012,12,1),72,30000,0,null,"",0,0,50000,0));
+        employeeList.add(new Employee("85","כץ","עינב","F",new myDate(1977,11,26),new myDate(2008,3,15),13919,new myDate(2012,12,1),72,30000,0,null,"",0,0,50000,0));
         employeeList.add(new Employee("86","חסן","עדי","F",new myDate(1978,5,28),new myDate(2010,1,9),23899,new myDate(2010,1,9),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("87","רוזנברג","דוד","M",new myDate(1978,10,3),new myDate(2010,12,10),32100,new myDate(2010,12,10),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("88","גירין","שלומית","F",new myDate(1979,8,15),new myDate(2015,7,15),27905,new myDate(2015,7,15),50,0,0,null,"",0,0,0,0));
@@ -125,7 +125,7 @@ public class Data {
         employeeList.add(new Employee("96","קדוש","מרינה","M",new myDate(1984,7,10),new myDate(2016,8,28),25107,new myDate(2016,8,28),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("97","ספיר","איתן","M",new myDate(1984,2,26),new myDate(2016,7,22),19849,new myDate(2016,7,22),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("98","וקנין","דבורה","F",new myDate(1982,3,10),new myDate(2007,1,22),25868,null,0,59173,25868,null,"",0,0,200000,100000));
-        employeeList.add(new Employee("99","שרחה ","לוסי","F",new myDate(1963,11,3),new myDate(2005,9,16),30785,null,0,253598,30785,null,"",0,0,200000,100000));
+        employeeList.add(new Employee("99","שרחה","לוסי","F",new myDate(1963,11,3),new myDate(2005,9,16),30785,null,0,253598,30785,null,"",0,0,200000,100000));
         employeeList.add(new Employee("100","ביסטרוב","שגיא","M",new myDate(1963,9,10),new myDate(2017,1,12),48043,new myDate(2017,1,12),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("101","אינוטייב","חוה","F",new myDate(1983,1,5),new myDate(2007,4,7),34198,new myDate(2014,10,30),100,200000,0,null,"",0,0,50000,0));
         employeeList.add(new Employee("102","רופא","בני","M",new myDate(1987,8,22),new myDate(2017,3,3),23989,new myDate(2017,3,3),50,0,0,null,"",0,0,0,0));
@@ -134,9 +134,9 @@ public class Data {
         employeeList.add(new Employee("105","ישראל","חיים","M",new myDate(1989,6,25),new myDate(2016,10,6),18779,new myDate(2016,10,6),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("106","הרוש","שירה","F",new myDate(1989,7,19),new myDate(2016,11,1),25107,new myDate(2016,11,1),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("107","פלדמן","אלקס","M",new myDate(1994,11,13),new myDate(2016,7,15),27905,new myDate(2016,7,15),50,0,0,null,"",0,0,0,0));
-        employeeList.add(new Employee("108","טישלר ","סבטלנה","F",new myDate(1969,3,12),new myDate(2010,10,29),30702,new myDate(2010,10,29),50,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("108","טישלר","סבטלנה","F",new myDate(1969,3,12),new myDate(2010,10,29),30702,new myDate(2010,10,29),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("109","מובשוביץ","נחום","M",new myDate(1978,5,21),new myDate(2017,3,24),27695,new myDate(2017,3,24),50,0,0,null,"",0,0,0,0));
-        employeeList.add(new Employee("110","פראח ","גבי","F",new myDate(1970,11,28),new myDate(2016,12,17),34058,new myDate(2016,12,17),50,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("110","פראח","גבי","F",new myDate(1970,11,28),new myDate(2016,12,17),34058,new myDate(2016,12,17),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("111","רם","רינה","F",new myDate(1955,10,12),new myDate(2003,7,1),31261,null,0,338130,31261,null,"",0,0,200000,100000));
         employeeList.add(new Employee("112","שחר","אמנון","M",new myDate(1974,9,12),new myDate(2005,12,11),27654,null,0,228238,27654,null,"",0,0,200000,100000));
         employeeList.add(new Employee("113","מלכ","אלון","M",new myDate(1989,9,3),new myDate(2016,9,13),27345,new myDate(2016,9,13),50,0,0,null,"",0,0,0,0));
@@ -144,21 +144,21 @@ public class Data {
         employeeList.add(new Employee("115","כהן","אלונה","F",new myDate(1961,11,12),new myDate(2004,1,11),20213,null,0,109892,20213,null,"",0,0,200000,100000));
         employeeList.add(new Employee("116","עזיז","בר","F",new myDate(1974,6,26),new myDate(2016,1,30),32380,new myDate(2016,1,30),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("117","טוביאנה","רות","F",new myDate(1954,11,18),new myDate(2004,10,6),26926,null,0,139822,26926,null,"",0,0,200000,100000));
-        employeeList.add(new Employee("118","לוי ","אנה ","F",new myDate(1954,5,10),new myDate(2007,6,6),19290,null,0,132658,19290,null,"",0,0,200000,100000));
+        employeeList.add(new Employee("118","לוי","אנה ","F",new myDate(1954,5,10),new myDate(2007,6,6),19290,null,0,132658,19290,null,"",0,0,200000,100000));
         employeeList.add(new Employee("119","לב","טל","M",new myDate(1963,9,28),new myDate(2005,8,12),24408,null,0,46991,24408,null,"",0,0,200000,100000));
         employeeList.add(new Employee("120","אלמקיאס","חנן","M",new myDate(1976,1,19),new myDate(2009,4,11),25107,new myDate(2009,4,11),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("121","דקל","רוביק","M",new myDate(1960,4,26),new myDate(1990,11,25),32100,new myDate(1990,11,25),50,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("122","ברק","שלמה","M",new myDate(1954,8,4),new myDate(2003,7,1),30702,null,0,277053,30702,null,"",0,0,200000,100000));
         employeeList.add(new Employee("123","עבד אל רחמן","מורד","M",new myDate(1994,1,19),new myDate(2016,8,3),11682,new myDate(2016,8,3),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("124","פומגרין","סתיו ","M",new myDate(1985,8,22),new myDate(2012,12,28),8885,new myDate(2012,12,28),100,0,0,null,"",0,0,0,0));
-        employeeList.add(new Employee("125","סרוסי ","אליס","F",new myDate(1979,12,25),new myDate(2013,5,1),8885,new myDate(2013,5,1),100,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("125","סרוסי","אליס","F",new myDate(1979,12,25),new myDate(2013,5,1),8885,new myDate(2013,5,1),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("126","מור","עדן","F",new myDate(1966,6,14),new myDate(2015,2,28),10143,null,0,14054,10143,null,"",0,0,200000,100000));
         employeeList.add(new Employee("127","שמעוני","איתמר","M",new myDate(1993,4,27),new myDate(2014,11,10),10563,null,0,30000,10563,new myDate(2021,5,7),"התפטרות",16400,0,200000,100000));
         employeeList.add(new Employee("128","גלעדי","גל","F",new myDate(1981,1,19),new myDate(2015,4,4),10143,null,0,30000,10143,new myDate(2021,9,4),"התפטרות",12300,0,200000,100000));
         employeeList.add(new Employee("129","שמעון","שי","M",new myDate(1966,10,28),new myDate(2014,9,18),11122,null,0,16454,11122,null,"",0,0,200000,100000));
         employeeList.add(new Employee("130","פרנקו","רביטל","F",new myDate(1975,11,9),new myDate(2014,5,1),11472,null,0,16842,11472,null,"",0,0,200000,100000));
         employeeList.add(new Employee("131","מזרחי","דפנה","F",new myDate(1981,5,3),new myDate(2014,5,1),20912,new myDate(2014,5,1),50,0,0,null,"",0,0,0,0));
-        employeeList.add(new Employee("132","גרייב ","נדין","F",new myDate(1987,7,13),new myDate(2014,5,1),10843,null,0,15884,10843,null,"",0,0,200000,100000));
+        employeeList.add(new Employee("132","גרייב","נדין","F",new myDate(1987,7,13),new myDate(2014,5,1),10843,null,0,15884,10843,null,"",0,0,200000,100000));
         employeeList.add(new Employee("133","טאהא","מוחמד","M",new myDate(1974,6,16),new myDate(2014,10,24),22310,new myDate(2014,10,24),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("134","בן משה","עינב","F",new myDate(1976,12,8),new myDate(2014,5,1),10843,null,0,21344,10843,null,"",0,0,200000,100000));
         employeeList.add(new Employee("135","בזאליי","יעל","F",new myDate(1990,1,9),new myDate(2014,5,1),16716,null,0,30461,16716,null,"",0,0,200000,100000));
@@ -170,7 +170,7 @@ public class Data {
         employeeList.add(new Employee("141","אדרי","לינוי","F",new myDate(1997,5,6),new myDate(2016,1,13),10143,null,0,20000,10143,new myDate(2021,3,6),"התפטרות",8200,0,200000,100000));
         employeeList.add(new Employee("142","דוארי","בני","M",new myDate(1971,7,9),new myDate(2016,8,19),15318,null,0,9999,15318,null,"",0,0,200000,100000));
         employeeList.add(new Employee("143","אמדו","חדוה","F",new myDate(1982,5,3),new myDate(2016,9,13),10563,null,0,3680,10563,null,"",0,0,200000,100000));
-        employeeList.add(new Employee("144","יעקב ","אבי","M",new myDate(1984,6,13),new myDate(2016,7,1),34848,new myDate(2016,7,1),100,0,0,null,"",0,0,0,0));
+        employeeList.add(new Employee("144","יעקב","אבי","M",new myDate(1984,6,13),new myDate(2016,7,1),34848,new myDate(2016,7,1),100,0,0,null,"",0,0,0,0));
         employeeList.add(new Employee("145","מושידה","מוריה","F",new myDate(1984,10,10),new myDate(2016,7,27),10423,null,0,20000,10423,new myDate(2021,7,5),"התפטרות",4920,0,200000,100000));
         employeeList.add(new Employee("146","חנינה","נעה","F",new myDate(1993,4,30),new myDate(2016,11,21),15667,null,0,9275,15667,null,"",0,0,200000,100000));
         employeeList.add(new Employee("147","לקסמן","רון","M",new myDate(1985,6,13),new myDate(2016,10,1),17416,null,0,10547,17416,null,"",0,0,200000,100000));

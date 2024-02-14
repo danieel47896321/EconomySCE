@@ -1,135 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    style="@style/CardView_Style">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:id="@+id/constraintLayout"
+        android:background="@color/white"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="11dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="10dp">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="5dp"
                 android:id="@+id/Id"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="ID"
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/ID"
+                android:textSize="20sp" />
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="0dp"
                 android:id="@+id/FirstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:text="שם: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/Id"
-                app:layout_constraintEnd_toStartOf="@+id/Id"
-                app:layout_constraintTop_toTopOf="@+id/Id" />
+                android:text="@string/FirstName"
+                android:textSize="20sp" />
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="0dp"
                 android:id="@+id/LastName"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text=", שם משפחה: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/FirstName"
-                app:layout_constraintEnd_toStartOf="@+id/FirstName"
-                app:layout_constraintTop_toTopOf="@+id/FirstName"
-                app:layout_constraintVertical_bias="1.0" />
+                android:text="@string/LastName"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/Compensation"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="סכום הפיצוים: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/Id"
-                app:layout_constraintTop_toBottomOf="@+id/Id" />
+        <TextView
+            style="@style/TextView_Style"
+            android:id="@+id/Compensation"
+            android:text="@string/Compensation"/>
 
-            <TextView
-                android:id="@+id/CostOfOnGoingService"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="עלות שירות שוטף: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Compensation"
-                app:layout_constraintTop_toBottomOf="@+id/Compensation" />
+        <TextView
+            style="@style/TextView_Style"
+            android:id="@+id/CostOfOnGoingService"
+            android:text="@string/CostOfOnGoingService"/>
 
-            <TextView
-                android:id="@+id/CostOfServiceExpectation"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="עלות יוון שוטף: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/CostOfOnGoingService"
-                app:layout_constraintTop_toBottomOf="@+id/CostOfOnGoingService" />
+        <TextView
+            style="@style/TextView_Style"
+            android:id="@+id/CostOfServiceExpectation"
+            android:text="@string/CostOfServiceExpectation"/>
 
-            <TextView
-                android:id="@+id/ActuarialLossGainInLiability"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="הפסד/רווח אקטוארי בהתחייבות: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/CostOfServiceExpectation"
-                app:layout_constraintTop_toBottomOf="@+id/CostOfServiceExpectation" />
+        <TextView
+            style="@style/TextView_Style"
+            android:id="@+id/ActuarialLossGainInLiability"
+            android:text="@string/ActuarialLossGainInLiability"/>
 
-            <TextView
-                android:id="@+id/ExpectedAssetsReturns"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="תשואה צפויה על נכסי התוכנית: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/ActuarialLossGainInLiability"
-                app:layout_constraintTop_toBottomOf="@+id/ActuarialLossGainInLiability" />
+        <TextView
+            style="@style/TextView_Style"
+            android:id="@+id/ExpectedAssetsReturns"
+            android:text="@string/ExpectedAssetsReturns"/>
 
-            <TextView
-                android:id="@+id/ActuarialLossGainInAssets"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="תשואה צפויה על נכסי התוכנית: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/ExpectedAssetsReturns"
-                app:layout_constraintTop_toBottomOf="@+id/ExpectedAssetsReturns" />
+        <TextView
+            style="@style/TextView_Style"
+            android:id="@+id/ActuarialLossGainInAssets"
+            android:text="@string/ActuarialLossGainInAssets"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

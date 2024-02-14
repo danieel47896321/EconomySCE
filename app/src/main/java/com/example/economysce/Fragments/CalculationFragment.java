@@ -40,16 +40,17 @@ import java.util.List;
 public class CalculationFragment extends Fragment {
     private RecyclerView recyclerView;
     private Button buttonCreateExcel;
-    private Data data = Data.getData();
+    private final Data data = Data.getData();
     private Context context;
     private List<EmployeeCalculation> employeeCalculationList;
     private double SalaryGrowthRate = 0.05;
     private CalculationAdapter calculationAdapter;
-    private File filePath = new File(Environment.getExternalStorageDirectory() + "/Demo.xls");
+    private final File filePath = new File(Environment.getExternalStorageDirectory() + "/Demo.xls");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calculation,container,false);
         ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+        int x[] = {4,5,6,1,2};
         context = view.getContext();
         buttonCreateExcel = view.findViewById(R.id.buttonCreateExcel);
         recyclerView = view.findViewById(R.id.recyclerView);
@@ -93,12 +94,10 @@ public class CalculationFragment extends Fragment {
     }
     private boolean CheckRetirement(Employee employee){
         if(employee.getGender().equals("M")) {
-            if (employee.getAge() > 67)
-                return true;
+            return employee.getAge() > 67;
         }
         else if(employee.getGender().equals("F")) {
-            if(employee.getAge() > 64)
-                return true;
+            return employee.getAge() > 64;
         }
         return false;
     }

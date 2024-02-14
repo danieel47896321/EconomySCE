@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">יישומי תכנות בכלכלה</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="MakeExcel">יצירת קובץ אקסל</string>
+    <string name="MakeExcel">Make Excel</string>
+    <string name="ID">1.</string>
+    <string name="FirstName">First Name:</string>
+    <string name="LastName">Last Name:</string>
+    <string name="Gender">Gender:</string>
+    <string name="Compensation">Compensation:</string>
+    <string name="Birthday">Birthday:</string>
+    <string name="Section14StartDate">Section 14 Start Date:</string>
+    <string name="Section14Percent">Section 14 Percent:</string>
+    <string name="StartWorkDate">Start Work Date:</string>
+    <string name="Salary">Salary:</string>
+    <string name="Seniority">Seniority:</string>
+    <string name="AssetValue">AssetValue:</string>
+    <string name="LeftDate">LeftDate:</string>
+    <string name="ReasonForLeaving">ReasonForLeaving:</string>
+    <string name="Deposits">Deposits:</string>
+    <string name="CostOfOnGoingService">Cost Of On Going Service:</string>
+    <string name="CostOfServiceExpectation">Cost Of Service Expectation:</string>
+    <string name="ActuarialLossGainInLiability">Actuarial Loss Gain In Liability:</string>
+    <string name="ExpectedAssetsReturns">Expected Assets Returns:</string>
+    <string name="ActuarialLossGainInAssets">Actuarial Loss Gain In Assets:</string>
 </resources>

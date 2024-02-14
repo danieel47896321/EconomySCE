@@ -1,199 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    style="@style/CardView_Style">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:id="@+id/constraintLayout"
+        android:background="@color/white"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="11dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        app:cardCornerRadius="10dp">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="5dp"
                 android:id="@+id/Id"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="ID"
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/ID"
+                android:textSize="20sp" />
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="0dp"
                 android:id="@+id/FirstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:text="שם: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/Id"
-                app:layout_constraintEnd_toStartOf="@+id/Id"
-                app:layout_constraintTop_toTopOf="@+id/Id" />
-
+                android:text="@string/FirstName"
+                android:textSize="20sp" />
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="0dp"
                 android:id="@+id/LastName"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text=", שם משפחה: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/FirstName"
-                app:layout_constraintEnd_toStartOf="@+id/FirstName"
-                app:layout_constraintTop_toTopOf="@+id/FirstName"
-                app:layout_constraintVertical_bias="1.0" />
+                android:text="@string/LastName"
+                android:textSize="20sp" />
 
             <TextView
+                style="@style/TextView_Style"
+                android:paddingStart="0dp"
                 android:id="@+id/Gender"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text=", מין: "
-                android:textColor="@color/default_color"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/LastName"
-                app:layout_constraintEnd_toStartOf="@+id/LastName"
-                app:layout_constraintTop_toTopOf="@+id/LastName"
-                app:layout_constraintVertical_bias="0.0" />
+                android:text="@string/Gender"
+                android:textSize="20sp" />
+        </LinearLayout>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/Birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="תאריך לידה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/Id"
-                app:layout_constraintTop_toBottomOf="@+id/Id" />
+                android:text="@string/Birthday"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/StartWorkDate"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="תאריך תחילת עבודה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Birthday"
-                app:layout_constraintTop_toBottomOf="@+id/Birthday" />
+                android:text="@string/StartWorkDate"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/Salary"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="שכר: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/StartWorkDate"
-                app:layout_constraintTop_toBottomOf="@+id/StartWorkDate" />
+                android:text="@string/Salary"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/Seniority"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="ותק: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Salary"
-                app:layout_constraintTop_toBottomOf="@+id/Salary" />
+                android:text="@string/Seniority"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/Section14StartDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="תאריך קבלת סעיף 14: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Seniority"
-                app:layout_constraintTop_toBottomOf="@+id/Seniority" />
+                android:text="@string/Section14StartDate"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/Section14Percent"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="אחוז סעיף 14: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Section14StartDate"
-                app:layout_constraintTop_toBottomOf="@+id/Section14StartDate" />
+                android:text="@string/Section14Percent"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/AssetValue"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="שווי נכס: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/Section14Percent"
-                app:layout_constraintTop_toBottomOf="@+id/Section14Percent" />
+                android:text="@string/AssetValue"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/LeftDate"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="2dp"
-                android:text="תאריך עזיבה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/AssetValue"
-                app:layout_constraintTop_toBottomOf="@+id/AssetValue" />
+                android:text="@string/LeftDate"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/ReasonForLeaving"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="תאריך עזיבה: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/LeftDate"
-                app:layout_constraintTop_toBottomOf="@+id/LeftDate" />
+                android:text="@string/ReasonForLeaving"/>
 
             <TextView
+                style="@style/TextView_Style"
                 android:id="@+id/Deposits"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="הפקדות: "
-                android:textColor="@color/default_color"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/ReasonForLeaving"
-                app:layout_constraintTop_toBottomOf="@+id/ReasonForLeaving" />
+                android:text="@string/Deposits"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

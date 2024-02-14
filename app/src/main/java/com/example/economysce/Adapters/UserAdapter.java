@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
-    private Context context;
+    private final Context context;
     private List<Employee> employees;
     public UserAdapter(Context context, List<Employee> employees){
         this.context = context;
@@ -29,32 +29,32 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Employee employee = employees.get(position);
-        holder.Id.setText("."+ employee.getId());
-        holder.FirstName.setText("שם: " + employee.getFirstName());
-        holder.LastName.setText(", שם משפחה: " + employee.getLastName());
-        holder.Gender.setText(", מין: " + employee.getGender());
-        holder.Birthday.setText("תאריך לידה: "+ employee.getBirthDay().getDay()+"/"+ employee.getBirthDay().getMonth()+"/"+ employee.getBirthDay().getYear() + " (" + getYears(employee.getBirthDay().getDate()) + ")");
-        holder.StartWorkDate.setText("תאריך תחילת עבודה: "+ employee.getStartWork().getDay()+"/"+ employee.getStartWork().getMonth()+"/"+ employee.getStartWork().getYear());
-        holder.Salary.setText("שכר: "+ employee.getSalary());
-        holder.Seniority.setText("ותק: "+ String.format("%.02f", employee.getSeniority()));
+        holder.Id.setText(employee.getId() + ".");
+        holder.FirstName.setText(context.getResources().getString(R.string.FirstName) + employee.getFirstName() + ", ");
+        holder.LastName.setText(context.getResources().getString(R.string.LastName) + employee.getLastName() + ", ");
+        holder.Gender.setText(context.getResources().getString(R.string.Gender) + employee.getGender());
+        holder.Birthday.setText(context.getResources().getString(R.string.Birthday) + " " + employee.getBirthDay().getDay()+"/"+ employee.getBirthDay().getMonth()+"/"+ employee.getBirthDay().getYear() + " (" + getYears(employee.getBirthDay().getDate()) + ")");
+        holder.StartWorkDate.setText(context.getResources().getString(R.string.StartWorkDate) + " " + employee.getStartWork().getDay()+"/"+ employee.getStartWork().getMonth()+"/"+ employee.getStartWork().getYear());
+        holder.Salary.setText(context.getResources().getString(R.string.Salary) + " " + employee.getSalary());
+        holder.Seniority.setText(context.getResources().getString(R.string.Seniority) + " " + String.format("%.02f", employee.getSeniority()));
         if(!employee.getReasonForLeaving().equals(""))
-            holder.ReasonForLeaving.setText("סיבת עזיבה: "+ employee.getReasonForLeaving());
+            holder.ReasonForLeaving.setText(context.getResources().getString(R.string.ReasonForLeaving) + " " + employee.getReasonForLeaving());
         else
-            holder.ReasonForLeaving.setText("סיבת עזיבה: -");
+            holder.ReasonForLeaving.setText(context.getResources().getString(R.string.ReasonForLeaving) + " -");
         if(employee.getSection14StartDate() == null) {
-            holder.Section14StartDate.setText("תאריך קבלת סעיף 14: -");
-            holder.Section14Percent.setText("אחוז סעיף 14: -");
+            holder.Section14StartDate.setText(context.getResources().getString(R.string.Section14StartDate) + " -");
+            holder.Section14Percent.setText(context.getResources().getString(R.string.Section14Percent) + " -");
         }
         else {
-            holder.Section14StartDate.setText("תאריך קבלת סעיף 14: " + employee.getSection14StartDate().getDay() + "/" + employee.getSection14StartDate().getMonth() + "/" + employee.getSection14StartDate().getYear());
-            holder.Section14Percent.setText("אחוז סעיף 14: " + (employee.getSection14Percent()*100) + "%");
+            holder.Section14StartDate.setText(context.getResources().getString(R.string.Section14StartDate) + " " + employee.getSection14StartDate().getDay() + "/" + employee.getSection14StartDate().getMonth() + "/" + employee.getSection14StartDate().getYear());
+            holder.Section14Percent.setText(context.getResources().getString(R.string.Section14Percent) + " " + (employee.getSection14Percent()*100) + "%");
         }
-        holder.AssetValue.setText("שווי נכס: "+ employee.getAssetValue());
+        holder.AssetValue.setText(context.getResources().getString(R.string.AssetValue) + " " + employee.getAssetValue());
         if(employee.getLeftDate() == null)
-            holder.LeftDate.setText("תאריך עזיבה: -");
+            holder.LeftDate.setText(context.getResources().getString(R.string.LeftDate) + " -");
         else
-            holder.LeftDate.setText("תאריך עזיבה: " + employee.getLeftDate().getDate()+"/"+ employee.getLeftDate().getMonth()+"/"+ employee.getLeftDate().getYear());
-        holder.Deposits.setText("הפקדות: " + employee.getDeposits());
+            holder.LeftDate.setText(context.getResources().getString(R.string.LeftDate) + " " + employee.getLeftDate().getDate()+"/"+ employee.getLeftDate().getMonth()+"/"+ employee.getLeftDate().getYear());
+        holder.Deposits.setText(context.getResources().getString(R.string.Deposits) + " " + employee.getDeposits());
     }
     private int getYears(Date date){
         int years = Calendar.getInstance().get(Calendar.YEAR) - date.getYear();

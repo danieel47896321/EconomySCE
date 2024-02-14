@@ -15,7 +15,7 @@ import com.example.economysce.R;
 import java.util.List;
 
 public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.ViewHolder> {
-    private Context context;
+    private final Context context;
     private List<EmployeeCalculation> employeeCalculationList;
     public CalculationAdapter(Context context, List<EmployeeCalculation> employeeCalculationList){
         this.context = context;
@@ -30,9 +30,9 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
     @Override
     public void onBindViewHolder(@NonNull CalculationAdapter.ViewHolder holder, int position) {
         EmployeeCalculation employeeCalculation = employeeCalculationList.get(position);
-        holder.Id.setText("." + employeeCalculation.getId());
-        holder.FirstName.setText("שם: " + employeeCalculation.getName());
-        holder.LastName.setText(", שם משפחה: " + employeeCalculation.getLastName());
+        holder.Id.setText(employeeCalculation.getId() + ".");
+        holder.FirstName.setText(context.getResources().getString(R.string.FirstName) + employeeCalculation.getName() + ", ");
+        holder.LastName.setText(context.getResources().getString(R.string.LastName) + employeeCalculation.getLastName());
         holder.Compensation.setText("סכום הפיצויים: " + String.format("%.02f",employeeCalculation.getCompensation()));
         holder.CostOfOnGoingService.setText("עלות שירות שוטף: " + String.format("%.02f",employeeCalculation.getOngoingServiceCost()));
         holder.CostOfServiceExpectation.setText("עלות יוון שוטף: " + String.format("%.02f",employeeCalculation.getDiscountCost()));
@@ -41,7 +41,7 @@ public class CalculationAdapter extends RecyclerView.Adapter<CalculationAdapter.
         else
             holder.ActuarialLossGainInLiability.setText("הפסד/רווח אקטוארי בהתחייבות: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInLiability()));
         holder.ExpectedAssetsReturns.setText("תשואה צפויה על נכסי התוכנית: " + String.format("%.02f",employeeCalculation.getExpectedAssetsReturns()));
-        if(employeeCalculation.getActuarialLossGainInLiability() < 0)
+        if(employeeCalculation.getActuarialLossGainInAssets() < 0)
             holder.ActuarialLossGainInAssets.setText("רווחים/הפסדים אקטוארים נכסים: " + String.format("%.02f",Math.abs(employeeCalculation.getActuarialLossGainInAssets())) + "-");
         else
             holder.ActuarialLossGainInAssets.setText("רווחים/הפסדים אקטוארים נכסים: " + String.format("%.02f",employeeCalculation.getActuarialLossGainInAssets()));

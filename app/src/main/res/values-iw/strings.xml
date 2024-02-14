@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">יישומי תכנות בכלכלה</string>
+    <string name="MakeExcel">יצירת קובץ אקסל</string>
+    <string name="ID">1.</string>
+    <string name="FirstName">שם:</string>
+    <string name="LastName">שם משפחה:</string>
+    <string name="Gender">מין:</string>
+    <string name="Compensation">סכום הפיצויים:</string>
+    <string name="Birthday">תאריך לידה:</string>
+    <string name="Section14StartDate">תאריך קבלת סעיף 14:</string>
+    <string name="Section14Percent">אחוז סעיף 14:</string>
+    <string name="StartWorkDate">תאריך תחילת העבודה:</string>
+    <string name="Salary">שכר:</string>
+    <string name="Seniority">ותק:</string>
+    <string name="AssetValue">שווי נכס:</string>
+    <string name="LeftDate">תאריך עזיבה:</string>
+    <string name="ReasonForLeaving">סיבת עזיבה:</string>
+    <string name="Deposits">הפקדות:</string>
+    <string name="CostOfOnGoingService">עלות שירות שוטף:</string>
+    <string name="CostOfServiceExpectation">עלות יוון שוטף:</string>
+    <string name="ActuarialLossGainInLiability">הפסד/רווח אקטוארי בהתחייבות:</string>
+    <string name="ExpectedAssetsReturns">תשואה צפויה על נכסי התוכנית:</string>
+    <string name="ActuarialLossGainInAssets">רווחים/הפסדים אקטוארים נכסים:</string>
+
+</resources>
